@@ -255,6 +255,7 @@
         require_once './header.php';
         require_once './php/API/DatabaseCredentials.php';
         $category = $_GET['key'];
+        $key2=$_GET['key2'];
 
         $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die("Database connection failed. " . mysqli_error($dbc));
         $query = "SELECT slides FROM `content` WHERE category_type='$category'";
@@ -275,8 +276,10 @@
         <script>
             var slides;
             var key;
+            var key2;
             $(document).ready(function () {
                 key = '<?php echo $category; ?>';
+                key2 = '<?php echo $key2; ?>';
                 slides = <?php echo $slides; ?>;
                 //                slides = JSON.parse(slides);
                 slides = slides['key'];
@@ -311,7 +314,7 @@
                 }
                 else if (counter == slides.length) {
                     $("#myModal").modal("hide");
-                    window.location.href = "quiz.php?key=" + key;
+                    window.location.href = "quiz.php?key=" + key + "&key2=" + key2 ;
                 }
 
             }

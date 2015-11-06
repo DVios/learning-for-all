@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a href="title_view.php?key=physics" class="portfolio-link" data-toggle="modal">
+                        <a href="title_view.php?key=Physics" class="portfolio-link" data-toggle="modal">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">
                                     <i class="fa fa-plus fa-3x"></i>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a href="title_view.php?key=chemistry" class="portfolio-link" data-toggle="modal">
+                        <a href="title_view.php?key=Chemistry" class="portfolio-link" data-toggle="modal">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">
                                     <i class="fa fa-plus fa-3x"></i>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a href="title_view.php?key=biology" class="portfolio-link" data-toggle="modal">
+                        <a href="title_view.php?key=Biology" class="portfolio-link" data-toggle="modal">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">
                                     <i class="fa fa-plus fa-3x"></i>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a href="title_view.php?key=commerce" class="portfolio-link" data-toggle="modal">
+                        <a href="title_view.php?key=Commerce" class="portfolio-link" data-toggle="modal">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">
                                     <i class="fa fa-plus fa-3x"></i>
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a href="title_view.php?key=accounting" class="portfolio-link" data-toggle="modal">
+                        <a href="title_view.php?key=Accounting" class="portfolio-link" data-toggle="modal">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">
                                     <i class="fa fa-plus fa-3x"></i>

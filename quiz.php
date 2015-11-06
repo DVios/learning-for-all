@@ -178,7 +178,6 @@
                 /*-Initializing timer-*/
                 var t = new Date();
                 if (t.getTime() > scrol_time + 5000) {
-                    console.log("update timer");
                     scrol_time = t.getTime();
                     nx = positions[33][0];
                     ny = positions[33][1];
@@ -251,6 +250,7 @@
 
         <?php
         $category = $_GET['key'];
+        $key2= $_GET['key2'];
 
         $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die("Database connection failed. " . mysqli_error($dbc));
         $query = "SELECT DISTINCT qstatus FROM `questions` WHERE category_type='$category' ";
@@ -292,7 +292,11 @@
 
         <script>
             var data;
+            var key;
+            var key2;
             $(document).ready(function () {
+                key =  '<?php echo $category; ?>';
+                key2 =  '<?php echo $key2; ?>';
                 data = <?php echo $arr; ?>;
                 data = data['key'];
 
@@ -322,31 +326,44 @@
             }
             var flag = false;
             function onNextClick() {
-                if (flag && data['q' + (counter + 1)]['qs1']['c'] == document.getElementsByName('optradio').value) {
+                if (flag && data['q' + (counter + 1)]['qs1']['c'] == $('input[name="optradio"]:checked').val()) {
                     document.getElementById("correct_p").innerHTML = "Correct answer!";
-                    setTimeout(function (){
+                    setTimeout(function () {
                         correct++;
-                        onNextClick();
-                    }, 1000);
-                    radioCounter = -1;
-                    return ;
+                        flag = false;
+                        onNextClick();//alert('1');
+                    }, 500);
+//                    radioCounter = -1;
+                    return;
                 }
-                else if(flag && data['q' + (counter + 1)]['qs1']['c'] != document.getElementsByName('optradio').value){
+                else if (flag && data['q' + (counter + 1)]['qs1']['c'] != $('input[name="optradio"]:checked').val()) {
                     $("#modal_p").html(data['q' + (counter + 1)]['qs1']['h']);
-                    $("#myModal").modal("show");
-                    setTimeout(function(){
+                    $("#myModal").modal("show");//alert('2');
+                    setTimeout(function () {
                         $("#myModal").modal("hide");
-                    },3000);
-                    
+                    }, 3000);
                 }
-                if (counter < 3) {
+                else if (counter < 1) {
+                    document.getElementById("correct_p").innerHTML = "";
+                    flag = true;
                     counter++;
+//                    alert(counter);
 //                    alert(data['q' + counter + 1]['qs1']['q']);
                     document.getElementById('question').innerHTML = 'Q' + (counter + 1) + ": " + data['q' + (counter + 1)]['qs1']['q'];
                     document.getElementById('ap0').innerHTML = data['q' + (counter + 1)]['qs1']['a1'];
                     document.getElementById('ap1').innerHTML = data['q' + (counter + 1)]['qs1']['a2'];
                     document.getElementById('ap2').innerHTML = data['q' + (counter + 1)]['qs1']['a3'];
                     document.getElementById('ap3').innerHTML = data['q' + (counter + 1)]['qs1']['a4'];
+                }
+                else if (counter == 1) {
+                    $("#mymodal_title").html("Quiz over!");
+                    $("#modal_p").html("End of Quiz.");
+                    $("#myModal").modal("show");
+                    setTimeout(function () {
+                        $("#myModal").modal("hide");
+//                        console.log(key);
+                        window.location.href = "title_view.php?key=" + key2;
+                    }, 3000);
                 }
             }
 
@@ -401,7 +418,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Wrong answer</h4>
+                                <h4 id="mymodal_title" class="modal-title">Wrong answer</h4>
                             </div>
                             <div class="modal-body">
                                 <p id="modal_p"></p>
@@ -413,7 +430,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <p><font color="green" size="20" id="correct_p"></font></p>
                 </div>

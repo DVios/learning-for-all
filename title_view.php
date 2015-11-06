@@ -34,7 +34,9 @@
         ?>
 
         <script>
+            var cat;
             $(document).ready(function () {
+                cat = '<?php echo $main_category; ?>';
                 var titles = '<?php echo $complete_array; ?>';
 //                alert(titles);
                 titles = JSON.parse(titles);
@@ -67,7 +69,7 @@
 
                             var a_sub = document.createElement("a");
                             a_sub.id = i + "_subtitle_" + j;
-                            a_sub.href = "tutorial_view.php?key=" + titles[i]['sub_titles'][j];
+                            a_sub.href = "tutorial_view.php?key=" + titles[i]['sub_titles'][j] + "&key2=" + cat;
 //                                a_sub.href = "#"
 //                                a_sub.setAttribute("onclick", loadTutorial());
                             a_sub.innerHTML = titles[i]['sub_titles'][j];
